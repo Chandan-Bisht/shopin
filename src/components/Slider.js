@@ -47,15 +47,16 @@ const Slider = ({ items }) => {
           backgroundImage: `url(${items[currentIndex].img})`,
         }}
         className="w-full h-full bg-cover"
+        key={items[currentIndex].id}
       >
-        <div className="absolute inset-y-0 left-[15%] transform translate-y-2/4">
+        <div className="absolute top-0 left-[15%] translate-y-full">
           <p className="text-2xl font-medium text-gray-500 animate-slideintop delay-1000">
             {items[currentIndex].title}
           </p>
           <h2 className="text-6xl font-bold text-gray-800 pt-3 pb-6 animate-slideinright delay-1000">
             {items[currentIndex].description}
           </h2>
-          <button className="bg-violet-400 text-white animate-slideinbottom uppercase font-semibold px-10 py-3 rounded-full hover:bg-black">
+          <button className="bg-violet-400 text-white animate-slideinbottom uppercase font-semibold px-10 py-3 rounded-full hover:bg-black ease-linear duration-300">
             Shop Now
           </button>
         </div>
