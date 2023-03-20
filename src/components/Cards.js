@@ -7,7 +7,7 @@ import card3 from "../assets/interface/home/card3.png";
 const Cards = () => {
   return (
     <section className="flex items-center flex-wrap gap-8 py-16 m-auto justify-center">
-      <div className="relative border border-gray-400 flex group hover:bg-violet-400 duration-300 ease-linear cursor-pointer">
+      <div className="relative overflow-hidden border border-gray-400 flex group hover:bg-violet-400 duration-300 ease-linear cursor-pointer">
         <div className="block p-8">
           <h3 className="text-2xl text-gray-800 font-bold group-hover:text-white">
             Women
@@ -16,7 +16,7 @@ const Cards = () => {
             Spring 2023
           </p>
         </div>
-        <div className="hidden absolute bottom-8 left-8 group-hover:block">
+        <div className="absolute -bottom-full left-8 group-hover:bottom-8 duration-500 ease-in-out">
           <NavLink
             to=""
             className="group-hover:text-white uppercase font-semibold underline underline-offset-8 decoration-2"
@@ -28,7 +28,7 @@ const Cards = () => {
           <img src={card1} alt="" className="" />
         </div>
       </div>
-      <div className="relative border border-gray-400 flex group hover:bg-violet-400 duration-300 ease-linear cursor-pointer">
+      <div className="relative overflow-hidden border border-gray-400 flex group hover:bg-violet-400 duration-300 ease-linear cursor-pointer">
         <div className="block p-8">
           <h3 className="text-2xl text-gray-800 font-bold group-hover:text-white">
             Men
@@ -37,7 +37,7 @@ const Cards = () => {
             Spring 2023
           </p>
         </div>
-        <div className="hidden absolute bottom-8 left-8 group-hover:block">
+        <div className="absolute -bottom-full left-8 group-hover:bottom-8 duration-500 ease-in-out">
           <NavLink
             to=""
             className="group-hover:text-white uppercase font-semibold underline underline-offset-8 decoration-2"
@@ -49,7 +49,7 @@ const Cards = () => {
           <img src={card2} alt="" className="" />
         </div>
       </div>
-      <div className="relative border border-gray-400 flex group hover:bg-violet-400 duration-300 ease-linear cursor-pointer">
+      <div className="relative overflow-hidden border border-gray-400 flex group hover:bg-violet-400 duration-300 ease-linear cursor-pointer">
         <div className="block p-8">
           <h3 className="text-2xl text-gray-800 font-bold group-hover:text-white">
             Accessories
@@ -58,7 +58,7 @@ const Cards = () => {
             New Trend
           </p>
         </div>
-        <div className="hidden absolute bottom-8 left-8 group-hover:block">
+        <div className="absolute -bottom-full left-8 group-hover:bottom-8 duration-500 ease-in-out">
           <NavLink
             to=""
             className="group-hover:text-white uppercase font-semibold underline underline-offset-8 decoration-2"
