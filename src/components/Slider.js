@@ -8,27 +8,27 @@ const Slider = ({ items }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const prevSlide = () => {
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? items.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
+    setCurrentIndex((prev) => {
+      return prev === 0 ? items.length - 1 : currentIndex - 1;
+    });
   };
 
   const nextSlide = () => {
-    const isLastSlide = currentIndex === items.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
+    setCurrentIndex((prev) => {
+      return prev + 1 === items.length ? 0 : currentIndex + 1;
+    });
   };
 
   useEffect(() => {
-    setTimeout(
-      () =>
-        setCurrentIndex((prevIndex) =>
-          prevIndex === items.length - 1 ? 0 : prevIndex + 1
-        ),
-      6000
-    );
-    return () => {};
-  }, [currentIndex]);
+    const intervalId = setInterval(() => {
+      setCurrentIndex((prev) => {
+        return prev + 1 === items.length ? 0 : prev + 1;
+      });
+    }, 4000);
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
   // const goToSlide = slideIndex => {
   //   setCurrentIndex(slideIndex)

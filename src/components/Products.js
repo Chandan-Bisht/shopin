@@ -7,6 +7,7 @@ import {
 } from "@mui/icons-material";
 import React, { useState } from "react";
 import data from "../constants/data";
+import ProductQuickView from "./ProductQuickView";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -16,6 +17,7 @@ const Products = () => {
   const [active, setActive] = useState(false);
   const [isSelected, setIsSelected] = useState(0);
   const [filterSelected, setFilterSelected] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
   const [search, setSearch] = useState(false);
   const [like, setLike] = useState(false);
   const [hover, setHover] = useState(false);
@@ -36,7 +38,7 @@ const Products = () => {
     setItems(updatedItems);
   };
 
-  const handleFilterClick = () => {
+  const handleFilter = () => {
     setFilterSelected(!filterSelected);
     setSearch(false);
   };
@@ -44,6 +46,14 @@ const Products = () => {
   const handleSearch = () => {
     setFilterSelected(false);
     setSearch(!search);
+  };
+
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+    const searchedItem = allproducts.filter((item) =>
+      item.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setItems(searchedItem);
   };
 
   return (
@@ -110,7 +120,7 @@ const Products = () => {
         </div>
         <div className="flex items-center gap-2">
           <button
-            onClick={handleFilterClick}
+            onClick={handleFilter}
             className="px-6 py-2 text-center text-gray-500 cursor-pointer border border-gray-200 rounded hover:bg-violet-400 hover:text-white"
           >
             <FilterListOutlined className="w-6 h-6 mr-2 hover:text-white" />
@@ -241,7 +251,9 @@ const Products = () => {
         </div>
         <input
           type="text"
-          id="search-navbar"
+          id="search"
+          value={searchTerm}
+          onChange={handleChange}
           className="block w-full p-4 pl-12 text-base text-gray-900 border border-gray-200 rounded-md bg-transparent outline-none focus:bg-white focus:ring-violet-400 focus:border-violet-400 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-400"
           placeholder="Search for products, brands and more"
         />
@@ -257,9 +269,7 @@ const Products = () => {
                   className="object-contain w-72 h-72 group-hover:scale-110 ease-in-out duration-500"
                 />
                 <div className="group-hover:bottom-8 flex justify-center absolute w-full -bottom-full duration-500 ease-in-out">
-                  <button className="px-8 py-2 bg-gray-50 text-gray-800 hover:bg-black hover:text-white rounded-full">
-                    Quick View
-                  </button>
+                  <ProductQuickView product={product} />
                 </div>
               </div>
               <div className="flex items-center justify-between pt-6">
@@ -278,7 +288,7 @@ const Products = () => {
                 </div>
               </div>
               <p className="text-gray-800 font-medium text-base">
-                &#8377; {product.price}
+                &#8377;{product.price}
               </p>
             </div>
           ))}
