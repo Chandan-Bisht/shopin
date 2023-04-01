@@ -1,9 +1,4 @@
-import {
-  Facebook,
-  FacebookOutlined,
-  Instagram,
-  Pinterest,
-} from "@mui/icons-material";
+import { FacebookOutlined, Instagram, Pinterest } from "@mui/icons-material";
 import React from "react";
 import { NavLink } from "react-router-dom";
 

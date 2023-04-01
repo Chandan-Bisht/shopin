@@ -1,6 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import Logo from "../assets/logo/logo-no-background.png";
+import { Link, NavLink } from "react-router-dom";
+import Logo from "../../assets/logo/logo-no-background.png";
 import {
   Search,
   FavoriteBorder,
@@ -70,7 +70,10 @@ const Navbar = () => {
       </div>
       <PersonOutlineOutlined className="text-gray-500 hover:text-violet-400 cursor-pointer" />
       <FavoriteBorder className="text-gray-500 hover:text-violet-400 cursor-pointer" />
-      <ShoppingCart className="text-gray-500 hover:text-violet-400 cursor-pointer" />
+      <Link to={"/cart"}>
+        <ShoppingCart className="text-gray-500 hover:text-violet-400 cursor-pointer" />
+        <p className="flex justify-center items-center absolute w-4 h-4 bg-violet-400 translate-x-[80%] translate-y-[-220%] rounded-full font-bold text-xs text-white">{0}</p>
+      </Link>
     </header>
   );
 };
